@@ -7,7 +7,6 @@ module.exports = {
 
 	create: function(req, res) {
 		var name = req.param('name');
-		// var now  = Date().
 		if(!req.param('name')) {
 			return res.redirect('/')
 		}
@@ -23,7 +22,7 @@ module.exports = {
 		var id = req.params.id;
 
 		Task.findOne(id).exec(function createCB(err, task) {
-			Task.update(task.id, {is_complete: !task.is_complete}).exec(function createCB(err, updated) {
+			Task.update(task.id, {is_complete: !task.is_complete }).exec(function createCB(err, updated) {
 				if(err) { console.log(err); }
 				return res.redirect('/');
 			});

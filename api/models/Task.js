@@ -8,13 +8,5 @@ module.exports = {
 			type: 'boolean',
 			defaultsTo: false
 		},
-
-		created_at: {
-			type: 'datetime'
-		},
-
-		updated_at: {
-			type: 'datetime'
-		}
-	},
+	}
 };

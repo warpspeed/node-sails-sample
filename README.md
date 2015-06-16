@@ -51,6 +51,16 @@ exit
 
 This will create a database named "tasks_db" with a collection, roughly equivalent to an SQL database's table, named 'tasks', in which your Task objects will be stored. Explicitly creating the database through the Mongo interactive shell is not necessary for the sample project to function properly. The requisite database and collection are generated at run-time according to the specifications found in the `connections.js` file located in the `config/` directory.
 
+## Configure your Evironment
+
+Sails ships with richly documented configuration options found inside the `config/` directory. Moreover, Sails defaults to a development envrionment, providing you with verbose error logs. To change the MongoDB database to which your application is connected, run the following commands:
+
+```
+  # RUN THESE COMMANDS FROM YOUR LOCAL MACHINE
+  
+  
+```  
+
 ## Create a WarpSpeed Site
 
 We need to create the appropriate server configuration files to run the site. To configure NGINX and Passenger to run your site, perform the following:
@@ -94,6 +104,10 @@ Finally, we need to reload the site configuration to finalize and effectuate our
 
 # reload the site configuration
 warpspeed site:reload warpspeed-sails.dev
+
+# ... or touch the restart.txt file
+cd ~/sites/warpspeed-sails.dev
+touch tmp/restart.txt
 ```
 
 Now you can access http://warpspeed-sails.dev on your local machine to view the site.
@@ -112,7 +126,7 @@ sudo nano /var/log/nginx/error.log
 sudo tail -f /var/log/nginx/error.log
 ```
 
-NGINX and Passenger handle the `sails lift` or `node app.js` each time the site's configuration is reloaded. Manually running these commands from your site's root directory in your VM will provide stack-traces in the event of a run-time error as well as all `console.log()` data.
+NGINX and Passenger handle the `sails lift` or `node app.js` commands each time the site's configuration is reloaded. Manually running these commands from your site's root directory in your VM will provide stack-traces in the event of a run-time error as well as all `console.log()` data.
 
 # License
 This sample project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
