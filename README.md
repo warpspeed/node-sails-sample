@@ -44,13 +44,16 @@ use tasks_db
 
 # create a dedicated collection
 db.createCollection('tasks')
+
+# exit and save
+exit
 ```
 
-This will create a database named "tasks_db" with a collection, roughly equivalent to an SQL database's table, named 'tasks', in which your Task objects will be stored.
+This will create a database named "tasks_db" with a collection, roughly equivalent to an SQL database's table, named 'tasks', in which your Task objects will be stored. Explicitly creating the database through the Mongo interactive shell is not necessary for the sample project to function properly. The requisite database and collection are generated at run-time according to the specifications found in the `connections.js` file located in the `config/` directory.
 
 ## Create a WarpSpeed Site
 
-We need to create the appropriate server configuration files to run the site. To configure Nginx and Passenger to run your site, perform the following:
+We need to create the appropriate server configuration files to run the site. To configure NGINX and Passenger to run your site, perform the following:
 
 ```
 # if you aren't already in your VM then...
@@ -63,6 +66,7 @@ vagrant ssh
 # notice that --force is used because the site directory already exists
 warpspeed site:create node warpspeed-sails.dev --force
 ```
+Note that each time you edit a file in this sample project, you must reload the NGINX and Passenger configuration files for the changes to effectuate. See [Restart your Site and Celebrate](#site_reload).
 
 ## Add a Hosts File Entry
 
@@ -82,7 +86,7 @@ sudo nano /etc/hosts
 
 Now, whenever you access "warpspeed-sails.dev" in the browser, you will be directed to your Express site within your VM.
 
-## Restart your Site and Celebrate
+## <a name="site_reload"></a>Restart your Site and Celebrate
 Finally, we need to reload the site configuration to finalize and effectuate our changes. To do so, perform the following:
 
 ```
@@ -107,6 +111,8 @@ sudo nano /var/log/nginx/error.log
 # ...or keep an open tab of the NGINX error log
 sudo tail -f /var/log/nginx/error.log
 ```
+
+NGINX and Passenger handle the `sails lift` or `node app.js` each time the site's configuration is reloaded. Manually running these commands from your site's root directory in your VM will provide stack-traces in the event of a run-time error as well as all `console.log()` data.
 
 # License
 This sample project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
