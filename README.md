@@ -19,7 +19,7 @@ To clone the repository to your local machine (not in your VM), use the followin
 # RUN THIS COMMAND FROM YOUR LOCAL ENVIRONMENT
 
 cd ~/Sites
-git clone git@github:YOUR_USERNAME/node-sails-sample.git warpspeed-sails.dev
+git clone git@github.com:YOUR_USERNAME/node-sails-example.git warpspeed-sails.dev
 ```
 
 ## Create a Database
