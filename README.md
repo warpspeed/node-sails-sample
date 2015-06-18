@@ -56,10 +56,29 @@ This will create a database named "tasks_db" with a collection, roughly equivale
 Sails ships with richly documented configuration options found inside the `config/` directory. Moreover, Sails defaults to a development envrionment, providing you with verbose error logs. To change the MongoDB database to which your application is connected, run the following commands:
 
 ```
-  # RUN THESE COMMANDS FROM YOUR LOCAL MACHINE
+# RUN THESE COMMANDS FROM YOUR LOCAL MACHINE
   
-  
+# cd to your project's root directory
+cd ~/sites/warpspeed-sails.dev
+
+# edit the connections.js file
+nano config/connections.js
+
+# the MongoDB connection should
+# resemble the following when complete:
+
+ someMongodbServer: {
+    adapter: 'sails-mongo',
+    host: 'localhost',
+    port: 27017,
+    user: '',
+    password: '',
+    database: 'tasks_db'
+  },
+
+# exit and save  
 ```  
+Note that MongoDB does not require admin authentication by default.
 
 ## Create a WarpSpeed Site
 
@@ -77,6 +96,35 @@ vagrant ssh
 warpspeed site:create node warpspeed-sails.dev --force
 ```
 Note that each time you edit a file in this sample project, you must reload the NGINX and Passenger configuration files for the changes to effectuate. See [Restart your Site and Celebrate](#site_reload).
+
+## Install Sails.js
+
+Sails.js utilizes Node Package Manager (npm) to manage its dependencies. To install the required libraries listed in the `package.json`, run the following commands: 
+
+```
+# RUN THESE COMMANDS FROM YOUR VM
+
+# cd to the project's root directory
+cd ~/sites/warpspeed-sails.dev
+
+# install Sails.js
+npm install
+```
+
+Note that installing Sails.js globally will provide you with some nifty command line functionality including automatic API generation. Moreover, you will have access to the `sails new sample-project` command, which configures your project's file structure as seen in this repository.
+
+```
+# RUN THESE COMMANDS FROM YOUR VM
+
+# install Sails.js globally
+sudo npm install sails -g
+
+# ...to start a new project
+# cd to your sites directory
+cd ~/sites
+sails new sample-project
+
+``` 
 
 ## Add a Hosts File Entry
 
