@@ -62,7 +62,7 @@ module.exports.connections = {
     port: 27017,
     user: '',
     password: '',
-    database: 'tasks_db'
+    database: 'tasks_sails'
   },
 
   /***************************************************************************
