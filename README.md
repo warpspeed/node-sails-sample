@@ -113,6 +113,9 @@ cd ~/sites/warpspeed-sails.dev
 
 # install Sails.js
 npm install
+
+# (on windows)
+npm install --no-bin-links
 ```
 
 Note that installing Sails.js globally will provide you with some nifty command line functionality including automatic API generation. Moreover, you will have access to the `sails new sample-project` command, which configures your project's file structure as seen in this repository.
@@ -139,6 +142,12 @@ To access your new Sails site, you will need to add an entry to your hosts file 
 
 # open a terminal and run the following command (for Mac)
 sudo nano /etc/hosts
+
+# using git bash or similar, must be run as admin (windows)
+notepad /c/Windows/System32/Drivers/etc/hosts
+
+# using command prompt, must be run as admin (windows)
+notepad C:\Windows\System32\Drivers\etc\hosts
 
 # add this line to the end of the file
 192.168.88.10 warpspeed-sails.dev
